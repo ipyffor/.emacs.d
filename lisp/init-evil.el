@@ -182,6 +182,7 @@ if LOCALLEADER is nil, otherwise \"<localleader>\"."
       "si" 'imenu
       "sp" 'consult-ripgrep
       "ss" 'consult-line
+      "sf" 'consult-locate
 
       ;; project
       "p" 'projectile-command-map
@@ -265,7 +266,19 @@ if LOCALLEADER is nil, otherwise \"<localleader>\"."
           ;; goto
           "gf" 'find-function
           "gv" 'find-variable
-          "gl" 'find-library)))))
+          "gl" 'find-library)))
+    (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
+    (evil-define-key 'normal 'global
+      "s" nil
+      ;; goto
+      "f" 'avy-goto-char-timer
+
+      ;; window
+      "sv" 'evil-window-vsplit
+      "sh" 'evil-window-split
+      "so" 'delete-other-windows
+      "sc" 'delete-window
+      "s=" 'balance-windows)))
 
 (provide 'init-evil)
 ;;; init-evil.el ends here

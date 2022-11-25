@@ -528,6 +528,32 @@ Else, call `comment-or-uncomment-region' on the current line."
   :config
   (setq completion-styles '(orderless)))
 
+;;将wndows键改为application键, 这里是把application键映射为super键
+(setq w32-apps-modifier 'super)
+(setq x-hyper-keysym 'super)
+
+;; 外部修改自动刷新
+(global-auto-revert-mode 1)
+
+;; y-or-no替换yes-or-no
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;; 记住命令的历史记录
+(use-package savehist
+  :ensure nil
+  :hook (after-init . savehist-mode)
+  :init (setq enable-recursive-minibuffers t ; Allow commands in minibuffers
+	      history-length 1000
+	      savehist-additional-variables '(mark-ring
+					      global-mark-ring
+					      search-ring
+					      regexp-search-ring
+					      extended-command-history)
+	      savehist-autosave-interval 300)
+  )
+
+(electric-pair-mode 1) ;; 括号、引号成双对
+
 (provide 'init-base)
 
 ;;; init-base.el ends here

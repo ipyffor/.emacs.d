@@ -82,6 +82,25 @@
   :custom
   (tab-bar-history-buttons-show nil))
 
+;; 给window编号，根据编号跳转窗口
+(use-package winum
+  :ensure t
+  :bind (
+         ("M-0" . 'winum-select-window-0-or-10)
+         ("M-1" . 'winum-select-window-1)
+         ("M-2" . 'winum-select-window-2)
+         ("M-3" . 'winum-select-window-3)
+         ("M-4" . 'winum-select-window-4)
+         ("M-5" . 'winum-select-window-5)
+         ("M-6" . 'winum-select-window-6)
+         ("M-7" . 'winum-select-window-7)
+         ("M-8" . 'winum-select-window-8)
+         ("M-9" . 'winum-select-window-9))
+
+  :config
+  (winum-mode t)
+  )
+
 (use-package all-the-icons
   :ensure t
   :when (display-graphic-p)
@@ -116,6 +135,11 @@
   (dashboard-items '((recents   . 10)
                      (projects  . 5)
                      (bookmarks . 5))))
+
+;; 彩虹括号
+(use-package rainbow-delimiters
+  :ensure t
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 (provide 'init-ui)
 

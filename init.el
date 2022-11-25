@@ -54,6 +54,7 @@
 (setq custom-file (locate-user-emacs-file "custom.el"))
 
 (require 'init-base)
+(require 'init-emacs-keybinds)
 (require 'init-utils)
 (require 'init-ui)
 (require 'init-tools)

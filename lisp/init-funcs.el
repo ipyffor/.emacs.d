@@ -80,5 +80,51 @@ confirmation."
        map)
      t)))
 
+(defun open-config ()
+  "Open personal config."
+  (interactive)
+  (find-file "~/.emacs.d/init.el"))
+
+;; 使用外部文件管理器打开文件夹
+(defun open-directory-externally (file)
+  "Open FILE externally using the default application of the system."
+  (interactive "fOpen externally: ")
+  (if (and (eq system-type 'windows-nt)
+	   (fboundp 'w32-shell-execute))
+      (let ((target-string "\\\\"))
+	(if (string-search "msys" (expand-file-name "~"))
+	    (setq target-string "\\\\\\\\"))
+	(shell-command-to-string (encode-coding-string (replace-regexp-in-string "/" target-string
+	    (format "explorer.exe %s" (file-name-directory (expand-file-name file)))) 'gbk)))
+    (call-process (pcase system-type
+		    ('darwin "open")
+		    ('cygwin "cygstart")
+		    (_ "xdg-open"))
+		  nil 0 nil
+		  (file-name-directory (expand-file-name file))))
+  (keyboard-quit))
+
+;;打开当前文件的目录
+(defun my-open-current-directory ()
+  (interactive)
+  (consult-directory-externally default-directory))
+
+(defun embark-export-write ()
+  "Export the current vertico results to a writable buffer if possible.
+Supports exporting consult-grep to wgrep, file to wdeired, and consult-location to occur-edit"
+  (interactive)
+  (require 'embark)
+  (require 'wgrep)
+  (pcase-let ((`(,type . ,candidates)
+               (run-hook-with-args-until-success 'embark-candidate-collectors)))
+    (pcase type
+      ('consult-grep (let ((embark-after-export-hook #'wgrep-change-to-wgrep-mode))
+                       (embark-export)))
+      ('file (let ((embark-after-export-hook #'wdired-change-to-wdired-mode))
+               (embark-export)))
+      ('consult-location (let ((embark-after-export-hook #'occur-edit-mode))
+                           (embark-export)))
+      (x (user-error "embark category %S doesn't support writable export" x)))))
+
 (provide 'init-funcs)
 ;;; init-funcs.el ends here
