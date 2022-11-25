@@ -125,8 +125,8 @@ if LOCALLEADER is nil, otherwise \"<localleader>\"."
 
       ;; buffer & bookmark
       "b" '(:wk "bufmark")
-      "bb" 'switch-to-buffer
-      "bB" 'switch-to-buffer-other-window
+      "bb" 'consult-buffer
+      "bB" 'consult-buffer-other-window
       "bc" 'clone-indirect-buffer
       "bC" 'clone-indirect-buffer-other-window
       "by" '+copy-current-buffer-name

@@ -19,6 +19,12 @@
   :config
   (load-theme 'leuven t))
 
+(use-package keycast
+  :ensure t
+  :init
+  (add-to-list 'global-mode-string '("" keycast-mode-line))
+  (keycast-mode t))
+
 (use-package doom-modeline
   :ensure t
   :hook (after-init . doom-modeline-mode)

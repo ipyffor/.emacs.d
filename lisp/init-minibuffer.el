@@ -26,7 +26,8 @@
          ([remap bookmark-jump]          . consult-bookmark)
          ([remap evil-show-marks]        . consult-mark)
          ([remap recentf-open-files]     . consult-recent-file)
-         ([remap repeat-complex-command] . consult-complex-command))
+         ([remap repeat-complex-command] . consult-complex-command)
+         ("C-x b"                        . consult-buffer))
   :config
   (with-no-warnings
     (consult-customize consult-ripgrep consult-git-grep consult-grep

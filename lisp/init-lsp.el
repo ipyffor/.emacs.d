@@ -56,7 +56,12 @@
 ;; lsp-mode
 (use-package lsp-mode
   :ensure t
-  :hook (prog-mode . lsp-deferred)
+  :init
+  ;; (setq debug-on-error nil) ;; debug 模式不设置执行lsp-install-server会报错
+  ;; emacs-lisp-mode 禁用
+  :hook (prog-mode . (lambda ()
+                       (if (not (plist-member '(emacs-lisp-mode) major-mode))
+                           (lsp-deferred))))
   :bind (:map lsp-mode-map
          ("C-c f" . lsp-format-region)
          ("C-c d" . lsp-describe-thing-at-point)

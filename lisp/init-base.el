@@ -523,6 +523,11 @@ Else, call `comment-or-uncomment-region' on the current line."
   :when (eq system-type 'darwin)
   :hook (after-init . exec-path-from-shell-initialize))
 
+(use-package orderless
+  :ensure t
+  :config
+  (setq completion-styles '(orderless)))
+
 (provide 'init-base)
 
 ;;; init-base.el ends here
