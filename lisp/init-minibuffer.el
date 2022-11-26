@@ -13,6 +13,11 @@
   ;; (vertico-sort-function nil) ;;设置为nil历史命令无法生效
 )
 
+(use-package marginalia
+  :ensure t
+  :config
+  (marginalia-mode t))
+
 (use-package embark
   :ensure t
   :bind (:map minibuffer-local-map
@@ -21,7 +26,10 @@
          ("C-c C-o" . embark-collect)
          ("C-c C-e" . embark-export-write))
   :config
-  (define-key embark-file-map (kbd "E") #'open-directory-externally))
+  (define-key embark-file-map (kbd "E") #'open-directory-externally)
+
+  :custom
+  (prefix-help-command 'embark-prefix-help-command))
 
 (use-package consult
   :ensure t

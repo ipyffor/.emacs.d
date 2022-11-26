@@ -29,6 +29,7 @@
   :ensure t
   :hook (after-init . doom-modeline-mode)
   :custom
+  (doom-modeline-env-version t)
   (doom-modeline-irc nil)
   (doom-modeline-mu4e nil)
   (doom-modeline-gnus nil)
@@ -125,6 +126,7 @@
                              (setq-local global-hl-line-mode nil))))
   :config
   (dashboard-setup-startup-hook)
+  (setq dashboard-center-content t) ;; 居中
   (defconst homepage-url "https://github.com/ipyffor/.emacs.d")
   (defconst stars-url (concat homepage-url "/stargazers"))
   (defconst issue-url (concat homepage-url "/issues/new"))

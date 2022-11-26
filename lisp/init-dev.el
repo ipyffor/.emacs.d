@@ -236,6 +236,7 @@
 (use-package tree-sitter-langs
   :ensure t)
 
+(require 'init-dap)
 (require 'init-cpp)
 (require 'init-rust)
 (require 'init-ocaml)

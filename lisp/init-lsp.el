@@ -25,11 +25,12 @@
     (let ((completion-styles '(basic partial-completion)))
       (apply func args)))
   :custom
+  (company-transformers '(company-sort-by-occurrence))
   (company-idle-delay 0)
   ;; Easy navigation to candidates with M-<n>
   (company-show-quick-access t)
   (company-require-match nil)
-  (company-minimum-prefix-length 3)
+  (company-minimum-prefix-length 1)
   (company-tooltip-width-grow-only t)
   (company-tooltip-align-annotations t)
   ;; complete `abbrev' only in current buffer and make dabbrev case-sensitive
