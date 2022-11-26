@@ -253,5 +253,8 @@
   ;; print messages in current channel buffer
   (rcirc-always-use-server-buffer-flag nil))
 
+(use-package restart-emacs
+  :ensure t)
+
 (provide 'init-tools)
 ;;; init-tools.el ends here

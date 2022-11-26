@@ -9,8 +9,9 @@
   :ensure t
   :hook ((after-init . vertico-mode)
          (minibuffer-setup . vertico-repeat-save))
-  :custom
-  (vertico-sort-function nil))
+  ;; :custom
+  ;; (vertico-sort-function nil) ;;设置为nil历史命令无法生效
+)
 
 (use-package embark
   :ensure t
@@ -37,7 +38,8 @@
                        consult-bookmark
                        consult-recent-file
                        consult-buffer
-                       :preview-key nil))
+                       ;; :preview-key nil ;; 禁止预览
+                       ))
   ;; Windows设置locate为everything，需添加命令行程序到环境变量
   (if (and (eq system-type 'windows-nt)
 	 (fboundp 'w32-shell-execute))

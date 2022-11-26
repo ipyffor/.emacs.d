@@ -108,7 +108,7 @@ if LOCALLEADER is nil, otherwise \"<localleader>\"."
 
       ;; file
       "f"  '(:wk "files")
-      "ff" 'find-file
+      "ff" 'project-find-file
       "fF" 'find-file-other-window
       "f/" 'find-file-other-window
       "fC" '+copy-current-file
