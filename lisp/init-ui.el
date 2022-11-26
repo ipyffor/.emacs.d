@@ -119,11 +119,13 @@
                                        (,(if (fboundp 'all-the-icons-material) (all-the-icons-material "update"         :height 1.1 :v-adjust -0.2) "♺")
                                         "Update" "Update packages synchronously" (lambda (&rest _) (package-update-all nil)) success))))
 
-  :hook ((after-init . dashboard-setup-startup-hook)
+  :hook (
+    ;; (after-init . dashboard-setup-startup-hook) ;; 无效
          (dashboard-mode . (lambda ()
                              (setq-local global-hl-line-mode nil))))
   :config
-  (defconst homepage-url "https://github.com/condy0919/.emacs.d")
+  (dashboard-setup-startup-hook)
+  (defconst homepage-url "https://github.com/ipyffor/.emacs.d")
   (defconst stars-url (concat homepage-url "/stargazers"))
   (defconst issue-url (concat homepage-url "/issues/new"))
   :custom

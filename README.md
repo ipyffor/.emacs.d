@@ -15,7 +15,7 @@
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
 
-- [个人**Emacs**配置](#个人emacs配置)
+- [个人**Emacs**配置(fork from https://github.com/condy0919/.emacs.d)](#个人emacs配置)
 - [需要的依赖](#需要的依赖)
 - [基础配置](#基础配置)
 - [插件配置、升级](#插件配置升级)
