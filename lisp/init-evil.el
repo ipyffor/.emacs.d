@@ -252,6 +252,13 @@ if LOCALLEADER is nil, otherwise \"<localleader>\"."
         "it" 'org-time-stamp-inactive
         "iT" 'org-time-stamp))
 
+    (with-eval-after-load 'dap-mode
+      (define-leader-key 'normal dap-mode-map :localleader
+        ;; "d" '(:wk "debug") ;; localleader not supported.
+        "dd" 'dap-debug
+        "dh" 'dap-hydra
+        "dq" 'dap-disconnect
+        "dl" 'dap-debug-last))
     (with-eval-after-load 'elisp-mode
       (dolist (keymap (list emacs-lisp-mode-map lisp-interaction-mode-map))
         (define-leader-key 'normal keymap :localleader

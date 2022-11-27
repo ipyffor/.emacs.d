@@ -24,6 +24,9 @@
   (dap-auto-configure-mode t)
   :config
   (dap-ui-mode 1)
+  (advice-add 'dap-debug :around #'(lambda (func debug-args)
+                                     (save-buffer)
+                                     (funcall func debug-args)))
   :hydra
   (hydra-dap-mode
    (:color pink :hint nil :foreign-keys run)
