@@ -8,6 +8,11 @@
 (require 'init-funcs)
 (require 'init-macros)
 
+;; d删除不写入剪切板
+(defun bb/evil-delete (orig-fn beg end &optional type _ &rest args)
+    (apply orig-fn beg end type ?_ args))
+(advice-add 'evil-delete :around 'bb/evil-delete)
+
 (use-package evil
   :ensure t
   :init
@@ -258,7 +263,8 @@ if LOCALLEADER is nil, otherwise \"<localleader>\"."
         "dd" 'dap-debug
         "dh" 'dap-hydra
         "dq" 'dap-disconnect
-        "dl" 'dap-debug-last))
+        "dl" 'dap-debug-last
+        "dp" 'dap-ui-repl))
     (with-eval-after-load 'elisp-mode
       (dolist (keymap (list emacs-lisp-mode-map lisp-interaction-mode-map))
         (define-leader-key 'normal keymap :localleader

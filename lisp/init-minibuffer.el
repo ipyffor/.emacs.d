@@ -88,7 +88,7 @@
 
 ;; (advice-add 'exit-minibuffer :after #'disable-py-search)
 (add-hook 'minibuffer-exit-hook 'disable-py-search)
-(global-set-key (kbd "s-p") 'toggle-chinese-search)
+(global-set-key (kbd "s-o") 'toggle-chinese-search)
 
 (provide 'init-minibuffer)
 ;;; init-minibuffer.el ends here
